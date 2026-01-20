@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript test</title>
+</head>
+<body>
+    <h1>JavaScript Test Page</h1>
+    <button onclick="showAlert('PUC')">Click me</button>
+
+    <h2>Input Grade (Prompt)</h2>
+    <button onclick="let g = inputGrade(); showAlert('Entered grade: ' + g)">Input Grade</button>
+
+    <h2>Add Two Grades</h2>
+    <input type="number" id="grade1" placeholder="Grade 1" oninput="updateSum()">
+    <input type="number" id="grade2" placeholder="Grade 2" oninput="updateSum()">
+    <p id="sumResult">Sum: N/A</p>
+
+    <h2>Check Pass/Fail</h2>
+    <input type="number" id="score" placeholder="Enter score" oninput="updatePassFail()">
+    <p id="passFailResult">Result: N/A</p>
+
+    <h2>Show Alert 2</h2>
+    <button onclick="showAlert2()">Show Alert 2</button>
+    <div id="alertMessage" style="display:none;"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
