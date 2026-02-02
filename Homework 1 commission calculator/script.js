@@ -106,8 +106,23 @@ function calculateCommission() {
     }
 
     if (!checkPositiveNumber(saleInput)) {
+        showError('Please enter a valid positive number');
+        return;
+    }
+
+    // Validate email input
+    if (!emailInput) {
+        showError('Please enter an email address');
+        return;
+    }
+
+    if (!checkEmail(emailInput)) {
+        showError('Please enter a valid email address');
+        return;
+    }
 
     // Calculate commission
+    const sale = Number(saleInput);
     const rate = calculateCommissionRate(sale);
     const commission = (sale * rate) / 100;
 
@@ -118,20 +133,21 @@ function calculateCommission() {
     // Display result
     document.getElementById('resultSale').textContent = saleFormatted;
     document.getElementById('resultRate').textContent = rate + '%';
+    document.getElementById('resultCommission').textContent = commissionFormatted;
     document.getElementById('result').style.display = 'block';
 }
 
 /**
  * showError - Displays an error message
  * @param {string} message - The error message to display
- */const sale = Number(saleInput);
+ */
+function showError(message) {
+    document.getElementById('error').textContent = message;
+    document.getElementById('error').style.display = 'block';
+}
 
-    const rate = calculateCommissionRate(sale);
-    const commission = (sale * rate) / 100;
-
-    const saleFormatted = useDecimal ? sale.toFixed(2) : Math.floor(sale);
-    const commissionFormatted = useDecimal ? commission.toFixed(2) : Math.floor(commission);
-er(123));              // true
+// ===== TEST CASES =====
+console.log(checkNumber(123));              // true
 console.log(checkNumber('abc'));            // false
 
 console.log(checkPositiveNumber(100));      // true
@@ -143,4 +159,3 @@ console.log(checkDecimal(12));              // false
 console.log(checkPositiveDecimal(12.5));    // true
 console.log(checkPositiveDecimal(-12.5));   // false
 console.log(checkBoolen(true));             // true
-c
