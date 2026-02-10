@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Teacher Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form id="teacherForm" novalidate>
+            <h1>Create a teacher!!!</h1>
+            
+            <div class="form-group">
+                <label for="teacherCode">TeacherCode</label>
+                <input type="text" id="teacherCode" name="teacherCode">
+                <div class="error-message">Information is required</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="fullName">FullName</label>
+                <input type="text" id="fullName" name="fullName">
+                <div class="error-message">Information is required</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <input type="text" id="contact" name="contact">
+                <div class="error-message">Information is required</div>
+            </div>
+            
+            <button type="submit">Create</button>
+            <p id="warningMessage" class="warning">Warning! Invalid input(s).</p>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
