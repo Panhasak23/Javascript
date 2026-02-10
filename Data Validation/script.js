@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('teacherForm');
     const warningMessage = document.getElementById('warningMessage');
+    const successMessage = document.getElementById('successMessage');
     const inputs = form.querySelectorAll('input');
     const errorMessages = form.querySelectorAll('.error-message');
+    const firstInput = document.getElementById('teacherCode'); // First input field
     
     // Reset all error states
     function resetErrors() {
         inputs.forEach(input => {
-            input.classList.remove('invalid');
+            input.classList.remove('invalid', 'valid');
         });
         
         errorMessages.forEach(message => {
@@ -15,6 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         warningMessage.classList.remove('visible');
+        successMessage.classList.remove('visible');
+    }
+    
+    // Hide success message
+    function hideSuccessMessage() {
+        successMessage.classList.remove('visible');
     }
     
     // Validate Teacher Code (non-empty)
@@ -23,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const errorMessage = input.nextElementSibling;
         
         if (value === '') {
+            input.classList.remove('valid');
             input.classList.add('invalid');
             if (errorMessage && errorMessage.classList.contains('error-message')) {
                 errorMessage.textContent = 'Information is required';
@@ -31,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         } else {
             input.classList.remove('invalid');
+            input.classList.add('valid');
             if (errorMessage && errorMessage.classList.contains('error-message')) {
                 errorMessage.classList.remove('visible');
             }
@@ -46,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const hasLetters = /[a-zA-Z]/.test(value);
         
         if (value === '') {
+            input.classList.remove('valid');
             input.classList.add('invalid');
             if (errorMessage && errorMessage.classList.contains('error-message')) {
                 errorMessage.textContent = 'Information is required';
@@ -53,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             return false;
         } else if (hasNumbers) {
+            input.classList.remove('valid');
             input.classList.add('invalid');
             if (errorMessage && errorMessage.classList.contains('error-message')) {
                 errorMessage.textContent = 'Name cannot contain numbers';
@@ -60,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             return false;
         } else if (!hasLetters) {
+            input.classList.remove('valid');
             input.classList.add('invalid');
             if (errorMessage && errorMessage.classList.contains('error-message')) {
                 errorMessage.textContent = 'Name must contain letters';
@@ -68,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         } else {
             input.classList.remove('invalid');
+            input.classList.add('valid');
             if (errorMessage && errorMessage.classList.contains('error-message')) {
                 errorMessage.classList.remove('visible');
             }
@@ -83,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const isNumeric = /^\d+$/.test(value.replace(/[\s\-\.\(\)]/g, ''));
         
         if (value === '') {
+            input.classList.remove('valid');
             input.classList.add('invalid');
             if (errorMessage && errorMessage.classList.contains('error-message')) {
                 errorMessage.textContent = 'Information is required';
@@ -90,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             return false;
         } else if (hasLetters) {
+            input.classList.remove('valid');
             input.classList.add('invalid');
             if (errorMessage && errorMessage.classList.contains('error-message')) {
                 errorMessage.textContent = 'Contact must contain only numbers';
@@ -97,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             return false;
         } else if (!isNumeric) {
+            input.classList.remove('valid');
             input.classList.add('invalid');
             if (errorMessage && errorMessage.classList.contains('error-message')) {
                 errorMessage.textContent = 'Contact must be numeric';
@@ -105,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         } else {
             input.classList.remove('invalid');
+            input.classList.add('valid');
             if (errorMessage && errorMessage.classList.contains('error-message')) {
                 errorMessage.classList.remove('visible');
             }
@@ -154,8 +172,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isValid) {
             // Form submission logic would go here
             console.log('Form submitted successfully');
-            form.reset();
-            resetErrors();
+            
+            // Show success message
+            successMessage.classList.add('visible');
+            
+            // Clear the form and reset errors after a short delay
+            setTimeout(() => {
+                form.reset();
+                resetErrors();
+                
+                // Set focus to the first input field for next record
+                firstInput.focus();
+            }, 1000);
         }
     });
     
@@ -163,14 +191,16 @@ document.addEventListener('DOMContentLoaded', function() {
     inputs.forEach(input => {
         input.addEventListener('input', function() {
             validateInput(this);
+            hideSuccessMessage();
         });
         
         input.addEventListener('focus', function() {
-            this.classList.remove('invalid');
+            this.classList.remove('invalid', 'valid');
             const errorMessage = this.nextElementSibling;
             if (errorMessage && errorMessage.classList.contains('error-message')) {
                 errorMessage.classList.remove('visible');
             }
+            hideSuccessMessage();
         });
     });
 });

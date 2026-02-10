@@ -115,6 +115,20 @@ button:hover {
     animation: fadeIn 0.5s;
 }
 
+.success {
+    display: none;
+    text-align: center;
+    color: #28a745;
+    font-weight: 600;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    animation: fadeIn 0.5s;
+}
+
+.success.visible {
+    display: block;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
