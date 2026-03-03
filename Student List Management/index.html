@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student List</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Student List</h1>
             <nav class="breadcrumb">
-                <a href="index.html" class="breadcrumb-link">Student List</a>
+                <a href="index.html" class="breadcrumb-link active">Student List</a>
                 <span class="breadcrumb-separator">/</span>
                 <a href="student-list-2.html" class="breadcrumb-link">Student List 2</a>
                 <span class="breadcrumb-separator">/</span>
@@ -39,10 +40,10 @@
                 </tbody>
             </table>
         </div>
-    </div>
 
-    <!-- Load student-data.js first, then script.js -->
+    <!-- Load student-data.js first, then script.js, then index.js -->
     <script src="JS/student-data.js"></script>
     <script src="JS/script.js"></script>
+    <script src="JS/index.js"></script>
 </body>
 </html>
