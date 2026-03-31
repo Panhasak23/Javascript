@@ -131,3 +131,41 @@ td {
 .btn-edit {
   background-color: #1976d2;
 }
+
+/* Pagination Styles */
+.pagination {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.btn-pagination {
+  padding: 8px 15px;
+  background-color: #5c7cfa;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-pagination:hover {
+  background-color: #4263eb;
+}
+
+.btn-pagination:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+#pageInfo {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  min-width: 100px;
+  text-align: center;
+}
