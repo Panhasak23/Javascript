@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="loader-overlay" class="loader-overlay" style="display: none">
+      <div class="spinner"></div>
+    </div>
+    <div class="container">
+        <h3>List of Movies <button class="btn btn-primary" id="BtShow">Show</button></h3>
+        <hr>
+         <table id="myTable" class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th class="text-center">No</th>
+                    <th class="text-left">Movie name</th>
+                    <th class="text-center">
+                        Types
+                    </th>
+                    <th class="text-center">Image</th>
+                    <th class="text-center">Air date</th>
+                    <th class="text-center">Time</th>
+                    <th class="text-center">Rating</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                 <!-- Existing rows can go here -->                
+            </tbody>
+        </table> 
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

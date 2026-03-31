@@ -1,0 +1,110 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+/* Loader Overlay with Blur Effect */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Spinner Animation */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #5c7cfa;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.header-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-right: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+#showBtn {
+  padding: 8px 20px;
+  background-color: #5c7cfa;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #1a1a2e; /* Dark navy from your image */
+  color: white;
+  text-align: left;
+  padding: 15px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #1900ff;
+  font-size: 14px;
+}
+
+/* Button Styles */
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  color: rgb(0, 17, 255);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-on {
+  background-color: #2d7a32;
+}
+.btn-delete {
+  background-color: #d32f2f;
+}
+.btn-edit {
+  background-color: #1976d2;
+}
