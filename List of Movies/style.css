@@ -2,6 +2,7 @@ body {
   font-family: "Segoe UI", sans-serif;
   background-color: #f8f9fa;
   padding: 20px;
+  margin: 0;
 }
 
 /* Loader Overlay with Blur Effect */
@@ -41,10 +42,11 @@ body {
 
 .container {
   max-width: 1200px;
-  margin: auto;
+  margin: 20px auto;
   background: white;
   padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .header-section {
@@ -62,11 +64,31 @@ h2 {
 #showBtn {
   padding: 8px 20px;
   background-color: #5c7cfa;
-  color: rgb(255, 255, 255);
+  color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  transition: background 0.3s;
+}
+
+#showBtn:hover {
+  background-color: #4263eb;
+}
+
+#BtShow {
+  padding: 8px 20px;
+  background-color: #5c7cfa;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+#BtShow:hover {
+  background-color: #4263eb;
 }
 
 table {
@@ -85,8 +107,8 @@ th {
 
 td {
   padding: 12px 15px;
-  border-bottom: 1px solid #1900ff;
-  font-size: 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 20px;
 }
 
 /* Button Styles */
@@ -94,9 +116,10 @@ td {
   padding: 6px 12px;
   border: none;
   border-radius: 4px;
-  color: rgb(0, 17, 255);
+  color: white;
   cursor: pointer;
   font-size: 12px;
+  min-width: 75px;
 }
 
 .btn-on {
