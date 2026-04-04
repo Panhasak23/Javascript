@@ -1,7 +1,5 @@
 <?php
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
 
 require_once 'db.php';
 
@@ -23,6 +21,12 @@ $password = isset($data['password']) ? $data['password']       : '';
 if ($username === '' || $email === '' || $password === '') {
     http_response_code(400);
     echo json_encode(['success' => false, 'message' => 'All fields are required']);
+    exit;
+}
+
+if (strlen($username) < 3) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Username must be at least 3 characters']);
     exit;
 }
 
@@ -67,8 +71,10 @@ if ($stmt->execute()) {
     $conn->close();
     echo json_encode(['success' => true, 'message' => 'Account created successfully!']);
 } else {
+    $errorDetail = $stmt->error;
     $stmt->close();
     $conn->close();
+    error_log('Registration INSERT failed: ' . $errorDetail);
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Failed to create account: ' . $conn->error]);
+    echo json_encode(['success' => false, 'message' => 'Failed to create account. Please try again.']);
 }

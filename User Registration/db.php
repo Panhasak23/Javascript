@@ -9,8 +9,9 @@ define('DB_NAME', 'user_registration');
 function getConnection() {
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     if ($conn->connect_error) {
+        error_log('Database connection failed: ' . $conn->connect_error);
         http_response_code(500);
-        echo json_encode(['success' => false, 'message' => 'Database connection failed: ' . $conn->connect_error]);
+        echo json_encode(['success' => false, 'message' => 'Database connection failed. Please try again later.']);
         exit;
     }
     return $conn;
