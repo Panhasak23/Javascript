@@ -11,6 +11,7 @@ function getConnection() {
     if ($conn->connect_error) {
         error_log('Database connection failed: ' . $conn->connect_error);
         http_response_code(500);
+        header('Content-Type: application/json');
         echo json_encode(['success' => false, 'message' => 'Database connection failed. Please try again later.']);
         exit;
     }

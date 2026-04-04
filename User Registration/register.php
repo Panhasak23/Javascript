@@ -15,7 +15,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $username = isset($data['username']) ? trim($data['username']) : '';
 $email    = isset($data['email'])    ? trim($data['email'])    : '';
-$password = isset($data['password']) ? $data['password']       : '';
+$password = isset($data['password']) ? $data['password'] : ''; // intentionally not trimmed – spaces are valid in passwords
 
 // Server-side validation
 if ($username === '' || $email === '' || $password === '') {
