@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.gradient-custom {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #5e25d8 0%, #2f63ff 100%);
+}
+
+.card.bg-dark {
+    background-color: #1f232c !important;
+    border: 0;
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.35);
+}
+
+#loginForm .form-control {
+    background-color: #d9e0ec;
+    border: 0;
+    color: #1d1f24;
+}
+
+#loginForm .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(77, 116, 255, 0.25);
+}
+
+#loginForm .form-floating > label {
+    color: #677184;
+}
+
+#loginForm .btn-outline-light {
+    min-width: 170px;
+    border-color: rgba(255, 255, 255, 0.75);
+    transition: all 0.2s ease;
+}
+
+#loginForm .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: #ffffff;
+}
+
+#messageArea {
+    color: #f8f9fa;
+    min-height: 24px;
+}
