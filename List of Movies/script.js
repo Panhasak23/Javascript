@@ -1,31 +1,49 @@
 let allMovies = [];
 let currentPage = 1;
 const itemsPerPage = 10;
+const showBtn = document.getElementById('BtShow');
+const tableBody = document.getElementById('tableBody');
+const statusMsg = document.getElementById('statusMsg');
+const pagination = document.getElementById('pagination');
+const loaderOverlay = document.getElementById('loader-overlay');
+const url = "https://api.tvmaze.com/shows/30/episodes";
 
 function hideSpinner(){
-    document.getElementById('loader-overlay').style.display = 'none';
+    loaderOverlay.style.display = 'none';
 }
 
 function showSpinner(){
-    document.getElementById('loader-overlay').style.display = 'flex';
+    loaderOverlay.style.display = 'flex';
 }
 
 async function loadTable() {
+    tableBody.innerHTML = '';
+    statusMsg.textContent = 'Loading movies...';
+    pagination.style.display = 'none';
     showSpinner();
-    const url = "https://api.tvmaze.com/shows/30/episodes";
+
     try {
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
+
         const resData = await response.json();
         allMovies = resData;
         currentPage = 1;
+
+        if (allMovies.length === 0) {
+            statusMsg.textContent = 'No movies found.';
+            return;
+        }
+
+        statusMsg.textContent = '';
         displayPage(currentPage);
-        setTimeout(hideSpinner, 2000);
     } catch (error) {
+        statusMsg.textContent = 'Error: Could not connect to the server.';
         console.error(error.message);
-        setTimeout(hideSpinner, 3000);
+    } finally {
+        hideSpinner();
     }
 }
 
@@ -40,7 +58,6 @@ function displayPage(pageNumber) {
 }
 
 function LoadTableData(jsonData){
-    const tableBody = document.getElementById('tableBody');
     tableBody.innerHTML = '';
     let i = 0;
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -52,17 +69,17 @@ function LoadTableData(jsonData){
             <td class='text-center'>${startIndex + i}</td>
             <td class='text-left'>${arrayItem.name}</td>
             <td class='text-center'>
-                ${arrayItem.type}
+                ${arrayItem.type || 'N/A'}
             </td>
-            <td class='text-center'><img src='${arrayItem.image.medium}' style='max-width: 300px;'></td>
+            <td class='text-center'>${arrayItem.image?.medium ? `<img src='${arrayItem.image.medium}' alt='${arrayItem.name}' style='max-width: 300px;'>` : 'N/A'}</td>
             <td class='text-center'>
-                ${arrayItem.airdate}
-            </td>
-            <td class='text-center'>
-                ${arrayItem.runtime}
+                ${arrayItem.airdate || 'N/A'}
             </td>
             <td class='text-center'>
-                ${arrayItem.rating.average}
+                ${arrayItem.runtime ?? 'N/A'}
+            </td>
+            <td class='text-center'>
+                ${arrayItem.rating?.average ?? 'N/A'}
             </td>
         `;
         tableBody.appendChild(newRow);
@@ -95,7 +112,7 @@ function goToNextPage() {
     }
 }
 
-document.getElementById('BtShow').addEventListener('click', function(){
+showBtn.addEventListener('click', function(){
     loadTable();
 });
 
