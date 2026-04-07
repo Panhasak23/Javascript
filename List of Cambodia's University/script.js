@@ -3,7 +3,7 @@ const tableBody = document.getElementById("tableBody");
 const statusMsg = document.getElementById("statusMsg");
 const loaderOverlay = document.getElementById("loader-overlay");
 
-const apiUrl = "http://universities.hipolabs.com/search?country=Cambodia";
+const apiUrl = "https://universities.hipolabs.com/search?country=Cambodia";
 
 showBtn.addEventListener("click", async () => {
   // 1. Reset table and SHOW the Blur Overlay
