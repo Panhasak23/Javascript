@@ -12,7 +12,7 @@ function showSpinner(){
 
 async function loadTable() {
     showSpinner();
-    const url = "http://api.tvmaze.com/shows/30/episodes";
+    const url = "https://api.tvmaze.com/shows/30/episodes";
     try {
         const response = await fetch(url);
         if (!response.ok) {
