@@ -3,39 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student List 2</title>
+    <title>Student List jQuery</title>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/student-list-2.css">
+    <link rel="stylesheet" href="styles/student-list-jquery.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Student List 2</h1>
+            <h1>Student List jQuery</h1>
             <nav class="breadcrumb">
                 <a href="index.html" class="breadcrumb-link">Student List</a>
                 <span class="breadcrumb-separator">/</span>
-                <a href="student-list-2.html" class="breadcrumb-link active">Student List 2</a>
+                <a href="student-list-2.html" class="breadcrumb-link">Student List 2</a>
                 <span class="breadcrumb-separator">/</span>
                 <a href="student-list-3.html" class="breadcrumb-link">Student List 3</a>
                 <span class="breadcrumb-separator">/</span>
-                <a href="student-list-jquery.html" class="breadcrumb-link">Student List jQuery</a>
+                <a href="student-list-jquery.html" class="breadcrumb-link active">Student List jQuery</a>
             </nav>
         </header>
 
         <div class="search-container">
             <div class="search-box">
-                <input 
-                    type="text" 
-                    id="searchInput" 
+                <input
+                    type="text"
+                    id="searchInput"
                     placeholder="Search by student code, name, contact, or gender..."
                     class="search-input"
                 >
                 <button id="searchBtn" class="search-btn">Search</button>
                 <button id="clearBtn" class="clear-btn">Clear</button>
             </div>
-            <div class="search-info" id="searchInfo">
-                Showing all students
-            </div>
+            <div class="search-info" id="searchInfo">Showing all students</div>
+        </div>
 
         <div class="table-container">
             <table id="studentTable">
@@ -52,15 +51,22 @@
                         <th>EDIT</th>
                     </tr>
                 </thead>
-                <tbody id="studentTableBody">
-                    <!-- Data will be populated by JavaScript -->
-                </tbody>
+                <tbody id="studentTableBody"></tbody>
             </table>
         </div>
 
-    <!-- Load student-data.js first, then script.js, then student-list-2.js -->
+        <div class="pagination-container">
+            <div class="pagination-info" id="paginationInfo">Showing 1-10 of 0 students</div>
+            <div class="pagination">
+                <button id="prevBtn" class="pagination-btn" disabled>Previous</button>
+                <span id="pageNumbers"></span>
+                <button id="nextBtn" class="pagination-btn" disabled>Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="JS/student-data.js"></script>
-    <script src="JS/script.js"></script>
-    <script src="JS/student-list-2.js"></script>
+    <script src="JS/student-list-jquery.js"></script>
 </body>
 </html>

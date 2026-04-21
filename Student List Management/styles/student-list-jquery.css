@@ -1,0 +1,7 @@
+/* Student List jQuery Specific Styles */
+
+#pageNumbers {
+    display: inline-flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
