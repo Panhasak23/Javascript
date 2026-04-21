@@ -21,14 +21,14 @@ window.onload = function() {
         //document.getElementById('welcomeMessage').textContent = 'Welcome, ' + username + '['+token+']!!!';
     } else {
         // If no cookie, redirect to login page
-        window.location.href = 'index (2).html';
+        window.location.href = 'index.html';
     }
 };
 // Logout function
 function logout() {
     deleteCookie('session_token');
     //deleteCookie('username');
-    window.location.href = 'index (2).html';
+    window.location.href = 'index.html';
 }
 function buildUrl(url, parameters) {
     var qs = "";
