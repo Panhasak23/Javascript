@@ -41,42 +41,28 @@ window.onload = function () {
     }
 };
 
+const STATIC_CREDENTIALS = [
+    { username: 'admin', password: '12345' },
+    { username: 'student', password: 'student123' }
+];
+
 function checkLogin(username, password) {
-    // Concatenate and Base64 encode the credentials
-    let encodedCredentials = btoa(`${username}:${password}`);
-    const url = "http://10.12.1.50/api/login";
+    const validUser = STATIC_CREDENTIALS.find((account) => {
+        return account.username === username.trim() && account.password === password;
+    });
 
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Basic ${encodedCredentials}`
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status ${response.status}`);
-        }
-        return response.text();
-    })
-    .then(data => {
-        const message = String(data).replace(/^"|"$/g, '');
+    if (validUser) {
+        const encodedCredentials = btoa(`${validUser.username}:${validUser.password}`);
+        document.getElementById("messageArea").textContent = "Login successful!";
+        document.getElementById("messageArea").style.color = 'green';
 
-        if (message === 'Login successful!') {
-            document.getElementById("messageArea").textContent = message;
-            document.getElementById("messageArea").style.color = 'green';
+        // Set a "session" cookie that lasts for 1 day
+        setCookie('session_token', encodedCredentials, 1);
 
-            // Set a "session" cookie that lasts for 1 day
-            setCookie('session_token', encodedCredentials, 1);
-
-            // Redirect to a protected page
-            window.location.href = 'dashboard.html';
-        } else {
-            document.getElementById("messageArea").textContent = message || "Warning! invalid user and password.";
-            document.getElementById("messageArea").style.color = '#f8f9fa';
-        }
-    })
-    .catch(error => {
+        // Redirect to a protected page
+        window.location.href = 'dashboard.html';
+    } else {
         document.getElementById("messageArea").textContent = "Warning! invalid user and password.";
         document.getElementById("messageArea").style.color = '#f8f9fa';
-    });
+    }
 }
